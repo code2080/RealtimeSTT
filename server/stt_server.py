@@ -491,10 +491,10 @@ async def main_async():
         'no_log_file': True,
     }
 
-    control_server = await websockets.serve(control_handler, "localhost", args.control_port)
-    data_server = await websockets.serve(data_handler, "localhost", args.data_port)
-    print(f"Control server started on ws://localhost:{args.control_port}")
-    print(f"Data server started on ws://localhost:{args.data_port}")
+    control_server = await websockets.serve(control_handler, "0.0.0.0", args.control_port)
+    data_server = await websockets.serve(data_handler, "0.0.0.0", args.data_port)
+    print(f"Control server started on ws://0.0.0.0:{args.control_port}")
+    print(f"Data server started on ws://0.0.0.0:{args.data_port}")
 
     # Task to broadcast audio messages
     broadcast_task = asyncio.create_task(broadcast_audio_messages())
